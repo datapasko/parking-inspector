@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/placesFragment">
+    <fragment
+        android:id="@+id/placesFragment"
+        android:name="com.tapascodev.inspector.places.ui.PlacesFragment"
+        android:label="fragment_places"
+        tools:layout="@layout/fragment_places" />
+    <fragment
+        android:id="@+id/carsFragment"
+        android:name="com.tapascodev.inspector.cars.ui.CarsFragment"
+        android:label="fragment_cars"
+        tools:layout="@layout/fragment_cars" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.tapascodev.inspector.favorites.ui.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>

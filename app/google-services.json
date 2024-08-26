@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "764473932599",
+    "project_id": "inspector-55ef7",
+    "storage_bucket": "inspector-55ef7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764473932599:android:de6feca71e51af991b38b2",
+        "android_client_info": {
+          "package_name": "com.tapascodev.inspector"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMO_FZ-qvX00a3v6pJdVW_VlEkNttPZas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
