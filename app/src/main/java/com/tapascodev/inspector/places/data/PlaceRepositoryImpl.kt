@@ -1,5 +1,6 @@
 package com.tapascodev.inspector.places.data
 
+import android.util.Log
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.toObject
 import com.tapascodev.inspector.base.ui.FireStoreCollection
@@ -55,6 +56,7 @@ class PlaceRepositoryImpl @Inject constructor(
                 for(doc in documents) {
                     val place = doc.toObject(ResponsePlace::class.java)
                     data.add(place.toDomain())
+                    Log.d("messi", "messi")
                 }
 
                 result.invoke(
