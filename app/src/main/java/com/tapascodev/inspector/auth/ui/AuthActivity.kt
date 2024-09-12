@@ -1,6 +1,7 @@
 package com.tapascodev.inspector.auth.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -52,6 +53,7 @@ class AuthActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.currentUser()
             viewModel.currentState.collect{
+                Log.d("messi", it.toString())
                 when (it) {
                     is Resource.Success -> {
                         if(it.value) startNewActivity(HomeActivity::class.java) else binding.navHostFragment.visible(true)

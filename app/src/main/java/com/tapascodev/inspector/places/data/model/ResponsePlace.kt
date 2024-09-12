@@ -6,13 +6,13 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ResponsePlace (
-    val id: String = "",
+    var id: String = "",
     val number: Int = 0,
     val floor: Int = 0,
     val size: String = ""
 ): Parcelable {
 
     fun toDomain(): Place {
-        return Place( id, number, floor, size)
+        return Place( id, number, floor, size, null)
     }
 }

@@ -4,7 +4,7 @@
         android:id="@+id/places_menu"
         android:enabled="true"
         android:icon="@drawable/baseline_local_parking_24"
-        android:title="@string/places_parking"/>
+        android:title="@string/places"/>
     <item
         android:id="@+id/cars_menu"
         android:enabled="true"

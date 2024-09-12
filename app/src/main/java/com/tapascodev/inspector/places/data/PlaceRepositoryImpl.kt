@@ -9,8 +9,10 @@ import com.tapascodev.inspector.network.data.FirebaseClient
 import com.tapascodev.inspector.network.domain.Resource
 import com.tapascodev.inspector.network.domain.SafeApiCall
 import com.tapascodev.inspector.places.data.model.ResponsePlace
+import com.tapascodev.inspector.places.data.model.ResponseRental
 import com.tapascodev.inspector.places.domain.PlaceRepository
 import com.tapascodev.inspector.places.domain.model.Place
+import com.tapascodev.inspector.places.domain.model.Rental
 import kotlinx.coroutines.tasks.await
 import okhttp3.internal.format
 import javax.inject.Inject
@@ -21,21 +23,13 @@ class PlaceRepositoryImpl @Inject constructor(
 
     override suspend fun getPlaces(floor: Int, result: (Resource<List<Place>>) -> Unit) {
 
-        firebaseClient.db.collection(FireStoreCollection.PLACES)
+        val data = mutableListOf<Place>()
+
+        val response = firebaseClient.db.collection(FireStoreCollection.PLACES)
             .whereEqualTo(FireStoreDocumentField.FLOOR, floor)
             .orderBy(FireStoreDocumentField.NUMBER, Query.Direction.ASCENDING)
             .get()
-            .addOnSuccessListener { documents ->
-                val data = mutableListOf<Place>()
-                for(doc in documents) {
-                    val place = doc.toObject(ResponsePlace::class.java)
-                    data.add(place.toDomain())
-                }
-
-                result.invoke(
-                    Resource.Success(data)
-                )
-            }.addOnFailureListener {
+            .addOnFailureListener {
                 result.invoke(
                     Resource.Failure(
                         false,
@@ -44,25 +38,45 @@ class PlaceRepositoryImpl @Inject constructor(
                     )
                 )
             }
+            .await()
+
+        response.toList().forEach { doc ->
+            doc.let {
+                val place = it.toObject(ResponsePlace::class.java).toDomain()
+                place.id = doc.id
+                place.currentRental = getCurrentRental(place.id)?.toDomain()
+                data.add(place)
+            }
+        }
+
+        result.invoke(
+            Resource.Success(data)
+        )
+    }
+
+    private suspend fun getCurrentRental(id: String): ResponseRental? {
+
+        val response =  firebaseClient.db.collection(FireStoreCollection.PLACES)
+            .document(id)
+            .collection(FireStoreCollection.RENTALS)
+            .whereEqualTo(FireStoreDocumentField.END, null)
+            .get()
+            .await()
+            .firstOrNull()
+
+        val rental = response?.toObject(ResponseRental::class.java)
+        rental?.id = response?.id.toString()
+
+        return rental
     }
 
     override suspend fun getPlacesQuery(query: String, result: (Resource<List<Place>>) -> Unit) {
-        firebaseClient.db.collection(FireStoreCollection.PLACES)
+        val data = mutableListOf<Place>()
+        val response = firebaseClient.db.collection(FireStoreCollection.PLACES)
             .whereEqualTo(FireStoreDocumentField.NUMBER, query.toInt())
             .orderBy(FireStoreDocumentField.NUMBER, Query.Direction.ASCENDING)
             .get()
-            .addOnSuccessListener { documents ->
-                val data = mutableListOf<Place>()
-                for(doc in documents) {
-                    val place = doc.toObject(ResponsePlace::class.java)
-                    data.add(place.toDomain())
-                    Log.d("messi", "messi")
-                }
-
-                result.invoke(
-                    Resource.Success(data)
-                )
-            }.addOnFailureListener {
+            .addOnFailureListener {
                 result.invoke(
                     Resource.Failure(
                         false,
@@ -71,6 +85,20 @@ class PlaceRepositoryImpl @Inject constructor(
                     )
                 )
             }
+            .await()
+
+        response.toList().forEach { doc ->
+            doc.let {
+                val place = it.toObject(ResponsePlace::class.java).toDomain()
+                place.id = doc.id
+                place.currentRental = getCurrentRental(place.id)?.toDomain()
+                data.add(place)
+            }
+        }
+
+        result.invoke(
+            Resource.Success(data)
+        )
     }
 
 }

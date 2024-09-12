@@ -21,7 +21,7 @@
     <string name="sign_up">Sign up</string>
     <string name="have_account">Don´t have an account?</string>
     <string name="nickname">Nickname</string>
-    <string name="places_parking">Places Parking</string>
+    <string name="places">Places</string>
     <string name="vehicles">Vehicles</string>
     <string name="favorites">Favorites</string>
     <string name="floor_1">Floor 1</string>
@@ -30,6 +30,9 @@
     <string name="floor_3">Floor 3</string>
     <string name="number">Number</string>
     <string name="car_plate">Car Plate</string>
+    <string name="search">Search</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings\n</string>
 
     <string-array name="zones">
         <item>Barcelona</item>

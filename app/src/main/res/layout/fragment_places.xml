@@ -5,80 +5,54 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".places.ui.PlacesFragment"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:paddingHorizontal="10dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardFloorOne"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleButtonFloor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cardFloorTwo"
-        app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/blue"
-        app:layout_constraintHorizontal_chainStyle="spread">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/floor_1"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardFloorTwo"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintTop_toTopOf="@id/cardFloorOne"
-        app:layout_constraintStart_toEndOf="@+id/cardFloorOne"
-        app:layout_constraintEnd_toStartOf="@id/cardFloorThree"
-        app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/green"
-        app:layout_constraintHorizontal_chainStyle="spread">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/floor_2"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardFloorThree"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintTop_toTopOf="@id/cardFloorTwo"
-        app:layout_constraintStart_toEndOf="@+id/cardFloorTwo"
-        app:layout_constraintEnd_toStartOf="@id/cardFloorFour"
-        app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/red"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        android:padding="10dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/floor_3"
-            android:textColor="@color/white"/>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardFloorFour"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintTop_toTopOf="@id/cardFloorThree"
-        app:layout_constraintStart_toEndOf="@+id/cardFloorThree"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/orange"
-        app:layout_constraintHorizontal_chainStyle="spread">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/floor_4"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-    </androidx.cardview.widget.CardView>
+        app:singleSelection="true"
+        android:gravity="center_horizontal"
+        app:checkedButton="@+id/floor1">
+
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/floor1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            app:icon="@drawable/baseline_local_parking_24"
+            />
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/floor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            app:icon="@drawable/baseline_local_parking_24"
+            />
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/floor3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            app:icon="@drawable/baseline_local_parking_24"
+            />
+
+        <Button
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/floor4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            app:icon="@drawable/baseline_local_parking_24"
+            />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -87,14 +61,19 @@
         android:layout_margin="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardFloorFour"
+        app:layout_constraintTop_toBottomOf="@+id/toggleButtonFloor"
+        android:background="@drawable/search_view_bg"
         app:iconifiedByDefault="false"
         app:searchHintIcon="@null"
-        app:queryHint="Search..."
+        app:queryHint="Search by place"
         android:focusable="false"
         app:closeIcon="@drawable/baseline_close_24"
         app:searchIcon="@drawable/baseline_search_24"
-        android:inputType="number"/>
+        android:inputType="number">
+
+
+    </androidx.appcompat.widget.SearchView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPlaces"

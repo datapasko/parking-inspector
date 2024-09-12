@@ -1,22 +1,21 @@
 package com.tapascodev.inspector.places.ui
 
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
-import androidx.core.view.marginEnd
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tapascodev.inspector.R
 import com.tapascodev.inspector.base.ui.BaseFragment
 import com.tapascodev.inspector.databinding.FragmentPlacesBinding
+import com.tapascodev.inspector.home.ui.HomeActivity
 import com.tapascodev.inspector.network.domain.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -36,12 +35,18 @@ class PlacesFragment : BaseFragment<FragmentPlacesBinding> (
     }
 
     private fun initUI() {
+
+        (activity as HomeActivity).supportActionBar?.title = getString(R.string.places)
         placesViewModel.getPlaces()
         binding.apply {
-            cardFloorOne.setOnClickListener { placesViewModel.getPlaces(1) }
-            cardFloorTwo.setOnClickListener { placesViewModel.getPlaces(2) }
-            cardFloorThree.setOnClickListener { placesViewModel.getPlaces(3) }
-            cardFloorFour.setOnClickListener { placesViewModel.getPlaces(4) }
+
+            floor1.setOnClickListener {
+                placesViewModel.getPlaces(1)
+                toggleButtonFloor.setBackgroundColor(Color.YELLOW)
+            }
+            floor2.setOnClickListener { placesViewModel.getPlaces(2) }
+            floor3.setOnClickListener { placesViewModel.getPlaces(3) }
+            floor4.setOnClickListener { placesViewModel.getPlaces(4) }
 
             searchView.clearFocus()
             searchView.setOnQueryTextListener(object: OnQueryTextListener {

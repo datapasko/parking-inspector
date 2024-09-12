@@ -1,13 +1,22 @@
 package com.tapascodev.inspector.base.ui
 
 object FireStoreCollection{
-    val USERS = "users"
-    val PLACES = "places"
+    const val USERS = "users"
+    const val PLACES = "places"
+    const val RENTALS = "rentals"
+    const val VEHICLES = "vehicles"
 }
 
 object FireStoreDocumentField {
     //place
-    val NUMBER = "number"
-    val FLOOR = "floor"
-    val SIZE = "size"
+    const val NUMBER = "number"
+    const val FLOOR = "floor"
+    const val SIZE = "size"
+
+    //rental
+    const val END = "end"
+
+    //vehicles
+    const val PLATE = "plate"
+
 }

@@ -8,8 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#808080</color>
+    <color name="gray_20">#EAEAEA</color>
     <color name="red">#FF0000</color>
-    <color name="blue">#002AFF</color>
+    <color name="red_20">#EC8686</color>
+    <color name="blue">#4259CD</color>
+    <color name="blue_20">#BCC5F3</color>
     <color name="green">#059113</color>
+    <color name="green_20">#66D671</color>
     <color name="orange">#FF7600</color>
+    <color name="orange_20">#E6A46B</color>
 </resources>
