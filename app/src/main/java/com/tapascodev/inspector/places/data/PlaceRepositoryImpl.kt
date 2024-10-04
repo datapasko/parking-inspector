@@ -21,21 +21,17 @@ class PlaceRepositoryImpl @Inject constructor(
     val firebaseClient: FirebaseClient
 ): PlaceRepository, SafeApiCall {
 
-    override suspend fun getPlaces(floor: Int, result: (Resource<List<Place>>) -> Unit) {
-
+    override suspend fun getPlaces(): Resource<List<Place>> {
         val data = mutableListOf<Place>()
 
         val response = firebaseClient.db.collection(FireStoreCollection.PLACES)
-            .whereEqualTo(FireStoreDocumentField.FLOOR, floor)
             .orderBy(FireStoreDocumentField.NUMBER, Query.Direction.ASCENDING)
             .get()
             .addOnFailureListener {
-                result.invoke(
-                    Resource.Failure(
-                        false,
-                        0,
-                        it.localizedMessage,
-                    )
+                Resource.Failure(
+                    false,
+                    0,
+                    it.localizedMessage,
                 )
             }
             .await()
@@ -49,9 +45,7 @@ class PlaceRepositoryImpl @Inject constructor(
             }
         }
 
-        result.invoke(
-            Resource.Success(data)
-        )
+        return Resource.Success(data)
     }
 
     private suspend fun getCurrentRental(id: String): ResponseRental? {
@@ -70,19 +64,17 @@ class PlaceRepositoryImpl @Inject constructor(
         return rental
     }
 
-    override suspend fun getPlacesQuery(query: String, result: (Resource<List<Place>>) -> Unit) {
+    override suspend fun getPlacesQuery(query: String): Resource<List<Place>> {
         val data = mutableListOf<Place>()
         val response = firebaseClient.db.collection(FireStoreCollection.PLACES)
             .whereEqualTo(FireStoreDocumentField.NUMBER, query.toInt())
             .orderBy(FireStoreDocumentField.NUMBER, Query.Direction.ASCENDING)
             .get()
             .addOnFailureListener {
-                result.invoke(
-                    Resource.Failure(
-                        false,
-                        0,
-                        it.localizedMessage,
-                    )
+                Resource.Failure(
+                    false,
+                    0,
+                    it.localizedMessage,
                 )
             }
             .await()
@@ -96,9 +88,8 @@ class PlaceRepositoryImpl @Inject constructor(
             }
         }
 
-        result.invoke(
-            Resource.Success(data)
-        )
+        Log.d("messi", data.toString())
+        return Resource.Success(data)
     }
 
 }

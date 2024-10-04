@@ -3,20 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_home"
-    app:startDestination="@id/placesFragment">
+    app:startDestination="@id/vehiclesFragment">
     <fragment
         android:id="@+id/placesFragment"
         android:name="com.tapascodev.inspector.places.ui.PlacesFragment"
         android:label="fragment_places"
-        tools:layout="@layout/fragment_places" />
-    <fragment
-        android:id="@+id/carsFragment"
-        android:name="com.tapascodev.inspector.cars.ui.CarsFragment"
-        android:label="fragment_cars"
-        tools:layout="@layout/fragment_cars" />
+        tools:layout="@layout/fragment_places" >
+        <action
+            android:id="@+id/action_placesFragment_to_vehiclesFragment"
+            app:destination="@id/vehiclesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.tapascodev.inspector.favorites.ui.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
+
+    <fragment
+        android:id="@+id/vehiclesFragment"
+        android:name="com.tapascodev.inspector.vehicles.ui.VehiclesFragment"
+        android:label="fragment_vehicles"
+        tools:layout="@layout/fragment_vehicles" >
+        <action
+            android:id="@+id/action_vehiclesFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_vehiclesFragment_to_vehicleAddEditFragment"
+            app:destination="@id/vehicleAddEditFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_vehiclesFragment_to_searchVehicleFragment"
+            app:destination="@id/searchVehicleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleAddEditFragment"
+        android:name="com.tapascodev.inspector.vehicles.ui.VehicleAddEditFragment"
+        android:label="fragment_vehicle_add_edit"
+        tools:layout="@layout/fragment_vehicle_add_edit" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_vehicleAddEditFragment_to_vehiclesFragment"
+            app:destination="@id/vehiclesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchVehicleFragment"
+        android:name="com.tapascodev.inspector.vehicles.ui.search.SearchVehicleFragment"
+        android:label="fragment_search_vehicle"
+        tools:layout="@layout/fragment_search_vehicle" />
 </navigation>

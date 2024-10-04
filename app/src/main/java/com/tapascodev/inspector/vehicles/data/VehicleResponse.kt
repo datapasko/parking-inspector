@@ -1,6 +1,8 @@
 package com.tapascodev.inspector.vehicles.data
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import com.google.j2objc.annotations.Property
 import com.tapascodev.inspector.vehicles.domain.model.Vehicle
 import kotlinx.parcelize.Parcelize
 
@@ -11,7 +13,7 @@ data class VehicleResponse (
     val address: String = "",
     val brand: String = "",
     val city: String = "",
-    val codePostal: String = "",
+    @Property("code_postal") val codePostal: String = "",
     val color: String = "",
     val email: String = "",
     val model: String = "",

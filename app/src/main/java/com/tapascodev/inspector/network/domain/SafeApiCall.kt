@@ -24,10 +24,11 @@ interface SafeApiCall {
                     }
 
                     else -> {
+                        println(throwable.message)
                         Resource.Failure(
                             true,
                             null,
-                            null
+                            throwable.message
                         )
                     }
                 }

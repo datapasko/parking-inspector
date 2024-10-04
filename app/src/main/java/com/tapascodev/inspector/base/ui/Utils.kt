@@ -36,6 +36,19 @@ import com.tapascodev.inspector.network.domain.Resource
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
+    fun Context.showKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.showSoftInput(view, 0)
+    }
+
+    fun Fragment.showKeyboard() {
+        view?.let { activity?.showKeyboard(it) }
+    }
+
+    fun Activity.showKeyboard() {
+        showKeyboard(currentFocus ?: View(this))
+    }
+
     fun View.visible(isVisible: Boolean) {
         visibility = if (isVisible) View.VISIBLE else View.GONE
     }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="brand_items" >
+        <item>Renault</item>
+        <item>Kia</item>
+        <item>Mercedes</item>
+        <item>Honda</item>
+        <item>Ferrari</item>
+        <item>Hyundai</item>
+        <item>Toyota</item>
+        <item>Peugeot</item>
+    </string-array>
+    <string-array name="color_items">
+        <item>Negro</item>
+        <item>Blanco</item>
+        <item>Rojo</item>
+        <item>Azul</item>
+        <item>Amarillo</item>
+        <item>Verde</item>
+        <item>Marrón</item>
+        <item>Violeta</item>
+        <item>Rosa</item>
+        <item>Gris</item>
+    </string-array>
+</resources>

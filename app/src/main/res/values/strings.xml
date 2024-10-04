@@ -33,6 +33,21 @@
     <string name="search">Search</string>
     <string name="logout">Logout</string>
     <string name="settings">Settings\n</string>
+    <string name="plate">Plate</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
+    <string name="standard_icon_btn_desc">icon button</string>
+    <string name="fab_content_desc">Float Action Button</string>
+    <string name="required">Required</string>
+    <string name="color">Color</string>
+    <string name="phone">Number phone</string>
+    <string name="save">Save</string>
+    <string name="contact_information">Contact information</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="code_postal">Code postal</string>
+    <string name="vehicle_information">Vehicle information</string>
+    <string name="update">Update</string>
 
     <string-array name="zones">
         <item>Barcelona</item>
