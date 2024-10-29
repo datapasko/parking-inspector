@@ -53,7 +53,6 @@ class AuthActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.currentUser()
             viewModel.currentState.collect{
-                Log.d("messi", it.toString())
                 when (it) {
                     is Resource.Success -> {
                         if(it.value) startNewActivity(HomeActivity::class.java) else binding.navHostFragment.visible(true)

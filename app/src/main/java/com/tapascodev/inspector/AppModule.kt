@@ -2,6 +2,8 @@ package com.tapascodev.inspector
 
 import com.tapascodev.inspector.auth.data.AuthRepositoryImpl
 import com.tapascodev.inspector.auth.domain.AuthRepository
+import com.tapascodev.inspector.home.data.HomeRepositoryImpl
+import com.tapascodev.inspector.home.domain.HomeRepository
 import com.tapascodev.inspector.lines.data.LineRepositoryImpl
 import com.tapascodev.inspector.lines.domain.LineRepository
 import com.tapascodev.inspector.network.data.FirebaseClient
@@ -29,6 +31,12 @@ object AppModule {
     @Provides
     fun provideAuthRepository(firebaseClient: FirebaseClient): AuthRepository {
         return AuthRepositoryImpl(firebaseClient)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHomeRepository(firebaseClient: FirebaseClient): HomeRepository {
+        return HomeRepositoryImpl(firebaseClient)
     }
 
     @Singleton

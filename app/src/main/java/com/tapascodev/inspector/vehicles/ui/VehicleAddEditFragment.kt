@@ -31,7 +31,6 @@ class VehicleAddEditFragment : Fragment() {
     private val args: VehicleAddEditFragmentArgs by navArgs()
     private var _binding: FragmentVehicleAddEditBinding? = null
     private val binding get() = _binding!!
-
     private var vehicleId: String? = null
 
     override fun onCreateView(
@@ -332,7 +331,6 @@ class VehicleAddEditFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        // Limpiar el estado del formulario al salir, para que no se repita el éxito/error al regresar
         viewModel.resetFormState()
     }
 }

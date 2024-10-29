@@ -18,4 +18,11 @@
     <color name="green_20">#66D671</color>
     <color name="orange">#FF7600</color>
     <color name="orange_20">#E6A46B</color>
+    <color name="blue_90">#1E3032</color>
+    <color name="blue_95">#111919</color>
+    <color name="yellow_40">#D8D83D</color>
+    <color name="green_30">#6DC58B</color>
+    <color name="green_40">#47D978</color>
+    <color name="purple_90">#2E0A59</color>
+
 </resources>
