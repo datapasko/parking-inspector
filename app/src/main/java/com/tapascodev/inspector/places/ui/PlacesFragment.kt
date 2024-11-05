@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.tapascodev.inspector.R
 import com.tapascodev.inspector.base.ui.snackbar
 import com.tapascodev.inspector.base.ui.visible
@@ -81,6 +82,8 @@ class PlacesFragment : Fragment() {
         binding.rvPlaces.apply {
             layoutManager = GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
             adapter = placeAdapter
+            val marginItem = PlaceDecoration()
+            addItemDecoration(marginItem)
         }
     }
 

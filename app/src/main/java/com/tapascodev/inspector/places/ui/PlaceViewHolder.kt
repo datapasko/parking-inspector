@@ -19,12 +19,12 @@ class PlaceViewHolder(
     fun render (place: Place) {
         binding.apply {
 
-            when(place.floor) {
+            /*when(place.floor) {
                 1 -> cardViewItem.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.blue_20))
                 2 -> cardViewItem.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.green_20))
                 3 -> cardViewItem.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.red_20))
                 4 -> cardViewItem.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.orange_20))
-            }
+            }*/
 
             tvNumber.text = place.number.toString()
             tvCarPlate.text = place.currentRental?.vehicle ?: "Free"
